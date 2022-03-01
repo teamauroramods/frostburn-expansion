@@ -3,12 +3,12 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "This is an example starter template.",
-  "authors": [ "Moonflower" ],
-  "contributors": [ "An author", "Another author", "The last author" ],
+  "description": "An expansion for Minecraft's hot and cold biomes.",
+  "authors": [ "Team Aurora" ],
+  "contributors": [ "ebo2022" ],
   "contact": {
-    "homepage": "https://www.moonflower.gg",
-	"issues": "https://github.com/MoonflowerTeam/${repo}/issues",
+    "homepage": "https://www.curseforge.com/members/team_aurora_modding/projects",
+	"issues": "https://github.com/teamauroramods/${repo}/issues",
     "sources": "https://github.com/MoonflowerTeam/${repo}/"
   },
   "license": "GPLv3",

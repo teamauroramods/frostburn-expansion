@@ -1,16 +1,16 @@
 modLoader = "javafml"
 loaderVersion = "[39,)"
-issueTrackerURL = "https://github.com/MoonflowerTeam/${repo}/issues"
+issueTrackerURL = "https://github.com/teamauroramods/${repo}/issues"
 license = "GPLv3"
 
 [[mods]]
-modId = "${id}"
+modId = "frostburn_expansion"
 version = "${version}"
 displayName = "${name}"
-authors = "Moonflower"
-credits = "An author, another author, and the last author."
-description = "This is an example starter template."
-displayURL = "https://www.moonflower.gg"
+authors = "Team Aurora"
+credits = "ebo2022"
+description = "An expansion for Minecraft's hot and cold biomes."
+displayURL = "https://www.curseforge.com/members/team_aurora_modding/projects"
 #updateJSONURL = ""
 #logoFile = ""
 
