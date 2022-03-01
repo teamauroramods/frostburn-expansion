@@ -4,13 +4,13 @@ issueTrackerURL = "https://github.com/teamauroramods/${repo}/issues"
 license = "GPLv3"
 
 [[mods]]
-modId = "frostburn_expansion"
+modId = "${id}"
 version = "${version}"
 displayName = "${name}"
 authors = "Team Aurora"
 credits = "ebo2022"
-description = "An expansion for Minecraft's hot and cold biomes."
-displayURL = "https://www.curseforge.com/members/team_aurora_modding/projects"
+description = "An expansion for Minecraft's hot and cold areas."
+displayURL = "https://discord.gg/BgE4EpP"
 #updateJSONURL = ""
 #logoFile = ""
 
@@ -31,6 +31,6 @@ side = "BOTH"
 [[dependencies.${id}]]
 modId = "pollen"
 mandatory = true
-versionRange = "[1.0.0,)"
+versionRange = "[1.1.1,)"
 ordering = "BEFORE"
 side = "BOTH"

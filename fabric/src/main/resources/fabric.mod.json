@@ -7,23 +7,23 @@
   "authors": [ "Team Aurora" ],
   "contributors": [ "ebo2022" ],
   "contact": {
-    "homepage": "https://www.curseforge.com/members/team_aurora_modding/projects",
+    "homepage": "https://discord.gg/BgE4EpP",
 	"issues": "https://github.com/teamauroramods/${repo}/issues",
-    "sources": "https://github.com/MoonflowerTeam/${repo}/"
+    "sources": "https://github.com/teamauroramods/${repo}/"
   },
   "license": "GPLv3",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "gg.moonflower.starter.core.fabric.StarterFabric"
+      "com.teamaurora.frostburn_expansion.core.fabric.FrostburnExpansionFabric"
     ],
     "fabric-datagen": [
-      "gg.moonflower.starter.core.fabric.StarterFabricDatagen"
+      "com.teamaurora.frostburn_expansion.core.fabric.FrostburnExpansionFabricDatagen"
     ]
   },
   "depends": {
     "fabric": "*",
     "minecraft": "1.18.x",
-    "pollen": "1.0.0"
+    "pollen": "1.1.1"
   }
 }
