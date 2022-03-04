@@ -1,5 +1,7 @@
 package com.teamaurora.frostburn_expansion.core;
 
+import com.teamaurora.frostburn_expansion.core.registry.FBExBlocks;
+import com.teamaurora.frostburn_expansion.core.registry.FBExItems;
 import gg.moonflower.pollen.api.platform.Platform;
 
 public class  FrostburnExpansion {
@@ -19,6 +21,8 @@ public class  FrostburnExpansion {
     }
 
     public static void onCommonInit() {
+        FBExBlocks.BLOCKS.register(FrostburnExpansion.PLATFORM);
+        FBExItems.ITEMS.register(FrostburnExpansion.PLATFORM);
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {

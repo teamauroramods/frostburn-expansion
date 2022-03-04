@@ -43,5 +43,7 @@
   "block.frostburn_expansion.borealene_pillar": "Borealene Pillar",
   "block.frostburn_expansion.borealene_lamp": "Borealene Lamp",
   "block.frostburn_expansion.borealene_vertical_slab" : "Borealene Vertical Slab",
-  "block.frostburn_expansion.borealene_brick_vertical_slab" : "Borealene Brick Vertical Slab"
+  "block.frostburn_expansion.borealene_brick_vertical_slab" : "Borealene Brick Vertical Slab",
+
+  "block.frostburn_expansion.mossy_basalt" : "Mossy Basalt"
 }

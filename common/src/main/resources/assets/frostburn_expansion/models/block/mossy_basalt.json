@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "frostburn_expansion:block/mossy_basalt_top",
+    "side": "frostburn_expansion:block/mossy_basalt"
+  }
+}
