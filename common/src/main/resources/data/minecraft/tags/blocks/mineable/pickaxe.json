@@ -1,6 +1,8 @@
 {
 	"replace": false,
 	"values": [
-		"frostburn_expansion:mossy_basalt"
+		"frostburn_expansion:mossy_basalt",
+		"frostburn_expansion:overgrown_basalt",
+		"frostburn_expansion:dirty_basalt"
 	]
 }

@@ -45,5 +45,8 @@
   "block.frostburn_expansion.borealene_vertical_slab" : "Borealene Vertical Slab",
   "block.frostburn_expansion.borealene_brick_vertical_slab" : "Borealene Brick Vertical Slab",
 
-  "block.frostburn_expansion.mossy_basalt" : "Mossy Basalt"
+  "block.frostburn_expansion.mossy_basalt" : "Mossy Basalt",
+  "block.frostburn_expansion.overgrown_basalt" : "Overgrown Basalt",
+  "block.frostburn_expansion.dirty_basalt" : "Dirty Basalt"
+
 }

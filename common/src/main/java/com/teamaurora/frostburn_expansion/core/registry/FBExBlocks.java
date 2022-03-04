@@ -24,6 +24,9 @@ public class FBExBlocks {
     public static final PollinatedRegistry<Block> BLOCKS = PollinatedRegistry.create(Registry.BLOCK, FrostburnExpansion.MOD_ID);
 
     public static final Supplier<Block> MOSSY_BASALT = registerBlock("mossy_basalt", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BASALT)), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> DIRTY_BASALT = registerBlock("dirty_basalt", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BASALT)), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> OVERGROWN_BASALT = registerBlock("overgrown_basalt", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BASALT)), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+
 
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
