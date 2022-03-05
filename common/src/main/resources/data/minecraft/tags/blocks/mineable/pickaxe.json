@@ -3,6 +3,16 @@
 	"values": [
 		"frostburn_expansion:mossy_basalt",
 		"frostburn_expansion:overgrown_basalt",
-		"frostburn_expansion:dirty_basalt"
+		"frostburn_expansion:dirty_basalt",
+		"frostburn_expansion:borealene",
+		"frostburn_expansion:borealene_slab",
+		"frostburn_expansion:borealene_wall",
+		"frostburn_expansion:borealene_bricks",
+		"frostburn_expansion:borealene_brick_slab",
+		"frostburn_expansion:borealene_brick_wall",
+		"frostburn_expansion:cracked_borealene_bricks",
+		"frostburn_expansion:chiseled_borealene_bricks",
+		"frostburn_expansion:borealene_lamp",
+		"frostburn_expansion:borealene_pillar"
 	]
 }
