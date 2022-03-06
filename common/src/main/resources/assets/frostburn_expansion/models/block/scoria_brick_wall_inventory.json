@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "frostburn_expansion:block/scoria_bricks"
+  }
+}

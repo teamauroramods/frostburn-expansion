@@ -37,6 +37,28 @@ public class FBExBlocks {
     public static final Supplier<Block> BOREALENE_PILLAR = registerBlock("borealene_pillar", () -> new RotatedPillarBlock(Properties.BOREALENE), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> BOREALENE_LAMP = registerBlock("borealene_lamp", () -> new Block(Properties.BOREALENE_LAMP), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
 
+    public static final Supplier<Block> SCORIA = registerBlock("scoria", () -> new Block(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_SLAB = registerBlock("scoria_slab", () -> new SlabBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_STAIRS = registerBlock("scoria_stairs", () -> new StairBlock(FBExBlocks.SCORIA.get().defaultBlockState(), Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_WALL = registerBlock("scoria_wall", () -> new WallBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+
+    public static final Supplier<Block> POLISHED_SCORIA = registerBlock("polished_scoria", () -> new Block(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> POLISHED_SCORIA_SLAB = registerBlock("polished_scoria_slab", () -> new SlabBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> POLISHED_SCORIA_STAIRS = registerBlock("polished_scoria_stairs", () -> new StairBlock(FBExBlocks.SCORIA.get().defaultBlockState(), Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> POLISHED_SCORIA_WALL = registerBlock("polished_scoria_wall", () -> new WallBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+
+    public static final Supplier<Block> SCORIA_BRICKS = registerBlock("scoria_bricks", () -> new Block(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_BRICK_SLAB = registerBlock("scoria_brick_slab", () -> new SlabBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_BRICK_STAIRS = registerBlock("scoria_brick_stairs", () -> new StairBlock(FBExBlocks.SCORIA_BRICKS.get().defaultBlockState(), Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_BRICK_WALL = registerBlock("scoria_brick_wall", () -> new WallBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+
+    public static final Supplier<Block> SCORIA_TILES = registerBlock("scoria_tiles", () -> new Block(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_TILE_SLAB = registerBlock("scoria_tile_slab", () -> new SlabBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_TILE_STAIRS = registerBlock("scoria_tile_stairs", () -> new StairBlock(FBExBlocks.SCORIA_BRICKS.get().defaultBlockState(), Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SCORIA_TILE_WALL = registerBlock("scoria_tile_wall", () -> new WallBlock(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+
+    public static final Supplier<Block> IGNEOUS_SCORIA = registerBlock("igneous_scoria", () -> new MagmaBlock(Properties.IGNEOUS_SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
         FBExItems.ITEMS.register(id, () -> new BlockItem(register.get(), properties));
@@ -46,5 +68,7 @@ public class FBExBlocks {
     public static final class Properties {
         public static final BlockBehaviour.Properties BOREALENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(1.5f, 6.0f).requiresCorrectToolForDrops();
         public static final BlockBehaviour.Properties BOREALENE_LAMP = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(1.5f, 6.0f).requiresCorrectToolForDrops().lightLevel(s -> 14);
+        public static final BlockBehaviour.Properties SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops();
+        public static final BlockBehaviour.Properties IGNEOUS_SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops().lightLevel(s -> 3).emissiveRendering((bs, br, bp) -> true);
     }
 }

@@ -45,8 +45,25 @@
   "block.frostburn_expansion.borealene_vertical_slab" : "Borealene Vertical Slab",
   "block.frostburn_expansion.borealene_brick_vertical_slab" : "Borealene Brick Vertical Slab",
 
+  "block.frostburn_expansion.scoria" : "Scoria",
+  "block.frostburn_expansion.scoria_slab" : "Scoria Slab",
+  "block.frostburn_expansion.scoria_stairs" : "Scoria Stairs",
+  "block.frostburn_expansion.scoria_wall" : "Scoria Wall",
+  "block.frostburn_expansion.polished_scoria" : "Polished Scoria",
+  "block.frostburn_expansion.polished_scoria_slab" : "Polished Scoria Slab",
+  "block.frostburn_expansion.polished_scoria_stairs" : "Polished Scoria Stairs",
+  "block.frostburn_expansion.polished_scoria_wall" : "Polished Scoria Wall",
+  "block.frostburn_expansion.scoria_bricks" : "Scoria Bricks",
+  "block.frostburn_expansion.scoria_brick_slab" : "Scoria Brick Slab",
+  "block.frostburn_expansion.scoria_brick_stairs" : "Scoria Brick Stairs",
+  "block.frostburn_expansion.scoria_brick_wall" : "Scoria Brick Wall",
+  "block.frostburn_expansion.scoria_tiles" : "Scoria Tiles",
+  "block.frostburn_expansion.scoria_tile_slab" : "Scoria Tile Slab",
+  "block.frostburn_expansion.scoria_tile_stairs" : "Scoria Tile Stairs",
+  "block.frostburn_expansion.scoria_tile_wall" : "Scoria Tile Wall",
+  "block.frostburn_expansion.igneous_scoria" : "Igneous Scoria",
+
   "block.frostburn_expansion.mossy_basalt" : "Mossy Basalt",
   "block.frostburn_expansion.overgrown_basalt" : "Overgrown Basalt",
   "block.frostburn_expansion.dirty_basalt" : "Dirty Basalt"
-
 }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frostburn_expansion:scoria"
+  },
+  "result": "frostburn_expansion:scoria_brick_slab",
+  "count": 2
+}

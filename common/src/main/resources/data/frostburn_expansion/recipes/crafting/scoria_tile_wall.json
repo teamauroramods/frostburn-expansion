@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "frostburn_expansion:scoria_tiles"
+    }
+  },
+  "result": {
+    "item": "frostburn_expansion:scoria_tile_wall",
+    "count": 6
+  }
+}

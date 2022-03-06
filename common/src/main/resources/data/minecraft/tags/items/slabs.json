@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "frostburn_expansion:borealene_slab",
+    "frostburn_expansion:borealene_brick_slab",
+    "frostburn_expansion:scoria_slab",
+    "frostburn_expansion:scoria_brick_slab",
+    "frostburn_expansion:scoria_tile_slab",
+    "frostburn_expansion:polished_scoria_slab"
+  ]
+}

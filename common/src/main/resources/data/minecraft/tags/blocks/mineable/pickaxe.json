@@ -15,6 +15,23 @@
 		"frostburn_expansion:cracked_borealene_bricks",
 		"frostburn_expansion:chiseled_borealene_bricks",
 		"frostburn_expansion:borealene_lamp",
-		"frostburn_expansion:borealene_pillar"
+		"frostburn_expansion:borealene_pillar",
+		"frostburn_expansion:scoria",
+		"frostburn_expansion:scoria_slab",
+		"frostburn_expansion:scoria_stairs",
+		"frostburn_expansion:scoria_wall",
+		"frostburn_expansion:polished_scoria",
+        "frostburn_expansion:polished_scoria_slab",
+       	"frostburn_expansion:polished_scoria_stairs",
+       	"frostburn_expansion:polished_scoria_wall",
+		"frostburn_expansion:scoria_bricks",
+		"frostburn_expansion:scoria_brick_slab",
+		"frostburn_expansion:scoria_brick_stairs",
+		"frostburn_expansion:scoria_brick_wall",
+		"frostburn_expansion:scoria_tiles",
+        "frostburn_expansion:scoria_tile_slab",
+   		"frostburn_expansion:scoria_tile_stairs",
+        "frostburn_expansion:scoria_tile_wall",
+        "frostburn_expansion:igneous_scoria"
 	]
 }

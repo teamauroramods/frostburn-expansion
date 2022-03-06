@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "frostburn_expansion:block/scoria_tile_slab" },
+    "type=top": { "model": "frostburn_expansion:block/scoria_tile_slab_top" },
+    "type=double": { "model": "frostburn_expansion:block/scoria_tiles" }
+  }
+}
