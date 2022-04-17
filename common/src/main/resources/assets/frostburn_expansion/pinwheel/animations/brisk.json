@@ -40,6 +40,17 @@
 					"rotation": [0, 0, 0]
 				}
 			}
+		},
+		"brisk.walk": {
+			"animation_length": 13.41667,
+			"bones": {
+				"leg1": {
+					"rotation": [45, 0, 0]
+				},
+				"leg3": {
+					"rotation": [-45, 0, 0]
+				}
+			}
 		}
 	}
 }
