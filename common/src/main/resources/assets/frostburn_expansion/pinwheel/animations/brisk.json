@@ -2,17 +2,42 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"brisk.setup": {
-			"loop": true
+			"loop": true,
+			"bones": {
+				"leg0": {
+					"rotation": [0, 0, 0]
+				},
+				"leg1": {
+					"rotation": [0, 0, 0]
+				},
+				"leg2": {
+					"rotation": [0, 0, 0]
+				},
+				"leg3": {
+					"rotation": [0, 0, 0]
+				}
+			}
 		},
 		"brisk.dance": {
-			"loop": true,
 			"animation_length": 100,
 			"bones": {
 				"head": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"100.0": [-3600, 0, -4680]
+						"100.0": [0, -100000, 0]
 					}
+				},
+				"leg0": {
+					"rotation": [0, 0, 0]
+				},
+				"leg1": {
+					"rotation": [0, 0, 0]
+				},
+				"leg2": {
+					"rotation": [0, 0, 0]
+				},
+				"leg3": {
+					"rotation": [0, 0, 0]
 				}
 			}
 		}

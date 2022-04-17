@@ -3,6 +3,7 @@ package com.teamaurora.frostburn_expansion.common.entity;
 import com.teamaurora.frostburn_expansion.common.entity.ai.goal.BriskSwellGoal;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimatedEntity;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationEffectHandler;
+import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationEffectSource;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -12,6 +13,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -34,10 +36,13 @@ import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.Supplier;
 
 /**
@@ -55,12 +60,16 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	private int explosionRadius = 3;
 	private AnimationState animation = AnimationState.EMPTY;
 	public static final AnimationState DANCE = new AnimationState(2000);
+	private AnimationState animationState;
 	private int animationTick;
 	public boolean isDancing = false;
+	private final AnimationEffectHandler effectHandler;
 	BlockPos jukeBoxPosition;
 
 	public Brisk(EntityType<? extends Monster> type, Level worldIn) {
 		super(type, worldIn);
+		this.effectHandler = new AnimationEffectHandler(this);
+		this.animationState = AnimationState.EMPTY;
 	}
 
 
@@ -73,6 +82,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.8D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(7, new BriskDanceGoal(this));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true));
 		this.targetSelector.addGoal(2, new HurtByTargetGoal(this, new Class[0]));
 	}
@@ -199,6 +209,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	protected InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		if (itemStack.is(Items.FLINT_AND_STEEL)) {
+			this.setAnimationState(DANCE);
 			this.level.playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
 			if (!this.level.isClientSide) {
 				this.ignite();
@@ -254,15 +265,6 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 		this.entityData.set(DATA_IS_IGNITED, true);
 	}
 
-	public boolean isAnimationPlaying(AnimationState animation) {
-		return this.getPlayingAnimationState() == animation;
-	}
-
-	@Override
-	public int getAnimationTick() {
-		return this.animationTick;
-	}
-
 	@Override
 	public AnimationState[] getAnimationStates() {
 		return new AnimationState[] {
@@ -270,43 +272,75 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 		};
 	}
 
-	public AnimationState getPlayingAnimationState() {
-		return this.animation;
+	@Override
+	public int getAnimationTick() {
+		return animationTick;
 	}
 
 	@Override
-	public void setAnimationTick(int animationTick) {
-		this.animationTick = animationTick;
+	public void setAnimationTick(int tick) {
+		this.animationTick = tick;
 	}
 
 	@Override
 	public AnimationState getAnimationState() {
-		return AnimationState.EMPTY;
+		return animationState;
 	}
 
 	@Override
-	public void setAnimationState(AnimationState animationToPlay) {
-		this.onAnimationStop(this.animation);
-		this.animation = animationToPlay;
+	public void setAnimationState(AnimationState state) {
+		this.onAnimationStop(this.animationState);
+		this.animationState = state;
 		this.setAnimationTick(0);
 	}
 
-	@Override
-	public @Nullable AnimationEffectHandler getAnimationEffects() {
-		return null;
-	}
-
-	public void setIsDancing(boolean dancing) {
+	public void setDancing(boolean dancing) {
 		this.isDancing = dancing;
 	}
-
-	public boolean getIsDancing() {
+	public boolean getDancing() {
 		return this.isDancing;
 	}
 
+	@Override
+	public AnimationEffectHandler getAnimationEffects() {
+		return effectHandler;
+	}
+
+	private static class BriskDanceGoal extends Goal {
+
+		private final Brisk brisk;
+		private int screechTime;
+
+		protected BriskDanceGoal(Brisk brisk) {
+			this.brisk = brisk;
+		}
+
+		@Override
+		public boolean canUse() {
+			return true;
+		}
+
+		@Override
+		public boolean canContinueToUse() {
+			return !brisk.isIgnited() && brisk.isAlive();
+		}
+
+		@Override
+		public void start() {
+			this.brisk.setDancing(true);
+			this.brisk.setAnimationState(DANCE);
+		}
+
+		@Override
+		public void stop() {
+			this.brisk.setDancing(false);
+			this.screechTime = 0;
+		}
+	}
+
 	static {
-		DATA_SWELL_DIR = SynchedEntityData.defineId(net.minecraft.world.entity.monster.Creeper.class, EntityDataSerializers.INT);
-		DATA_IS_POWERED = SynchedEntityData.defineId(net.minecraft.world.entity.monster.Creeper.class, EntityDataSerializers.BOOLEAN);
-		DATA_IS_IGNITED = SynchedEntityData.defineId(net.minecraft.world.entity.monster.Creeper.class, EntityDataSerializers.BOOLEAN);
+		DATA_SWELL_DIR = SynchedEntityData.defineId(Brisk.class, EntityDataSerializers.INT);
+		DATA_IS_POWERED = SynchedEntityData.defineId(Brisk.class, EntityDataSerializers.BOOLEAN);
+		DATA_IS_IGNITED = SynchedEntityData.defineId(Brisk.class, EntityDataSerializers.BOOLEAN);
 	}
 }

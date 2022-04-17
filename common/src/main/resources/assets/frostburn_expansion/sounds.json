@@ -1,0 +1,10 @@
+{
+  "music_disc.brisksong": {
+    "sounds": [
+      {
+        "name": "frostburn_expansion:records/brisksong",
+        "stream": true
+      }
+    ]
+  }
+}

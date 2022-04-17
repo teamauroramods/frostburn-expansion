@@ -9,15 +9,22 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.Creeper;
-
 
 @Environment(EnvType.CLIENT)
 public class BriskRenderer extends AnimatedEntityRenderer<Brisk> {
     public static final ResourceLocation BRISK_LOCATION = new ResourceLocation(FrostburnExpansion.MOD_ID, "brisk");
+    private static final ResourceLocation[] DANCE_ANIMATION = new ResourceLocation[]{new ResourceLocation(FrostburnExpansion.MOD_ID, "brisk.setup"), new ResourceLocation(FrostburnExpansion.MOD_ID, "brisk.dance")};
+
 
     public BriskRenderer(EntityRendererProvider.Context context) {
         super(context, FrostburnExpansion.generateResourceLocation("brisk"), 1.0F);
+    }
+
+    @Override
+    public ResourceLocation[] getAnimations(Brisk entity) {
+        if (entity.isDancing)
+            return DANCE_ANIMATION;
+        return super.getAnimations(entity);
     }
 
     protected void scale(Brisk brisk, PoseStack poseStack, float f) {
