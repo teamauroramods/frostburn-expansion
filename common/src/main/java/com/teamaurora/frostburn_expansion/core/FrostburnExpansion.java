@@ -1,8 +1,13 @@
 package com.teamaurora.frostburn_expansion.core;
 
+import com.teamaurora.frostburn_expansion.client.render.entity.living.BriskRenderer;
 import com.teamaurora.frostburn_expansion.core.registry.FBExBlocks;
+import com.teamaurora.frostburn_expansion.core.registry.FBExEntities;
 import com.teamaurora.frostburn_expansion.core.registry.FBExItems;
 import gg.moonflower.pollen.api.platform.Platform;
+import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
+import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
+import net.minecraft.resources.ResourceLocation;
 
 public class  FrostburnExpansion {
     public static final String MOD_ID = "frostburn_expansion";
@@ -15,6 +20,7 @@ public class  FrostburnExpansion {
             .build();
 
     public static void onClientInit() {
+        EntityRendererRegistry.register(FBExEntities.BRISK, BriskRenderer::new);
     }
 
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
@@ -23,11 +29,17 @@ public class  FrostburnExpansion {
     public static void onCommonInit() {
         FBExBlocks.BLOCKS.register(FrostburnExpansion.PLATFORM);
         FBExItems.ITEMS.register(FrostburnExpansion.PLATFORM);
+        FBExEntities.ENTITY_TYPES.register(FrostburnExpansion.PLATFORM);
+        FBExEntities.registerEntityAttributes();
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
     }
 
     public static void onDataInit(Platform.DataSetupContext ctx) {
+    }
+
+    public static ResourceLocation generateResourceLocation(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }

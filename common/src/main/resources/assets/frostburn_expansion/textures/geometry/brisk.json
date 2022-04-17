@@ -1,0 +1,7 @@
+{
+  "texture": {
+    "type": "location",
+    "texture": "frostburn_expansion:entity/living/brisk",
+    "layer": "cutout"
+  }
+}
