@@ -1,10 +1,8 @@
 package com.teamaurora.frostburn_expansion.core.registry;
 
-import com.teamaurora.frostburn_expansion.common.item.FollowItemLike;
 import com.teamaurora.frostburn_expansion.core.FrostburnExpansion;
-import com.teamaurora.frostburn_expansion.core.registry.FBExItems;
+import com.teamaurora.frostburn_expansion.core.other.FBExSoundTypes;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
-import gg.moonflower.pollen.pinwheel.api.client.blockdata.BlockData;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -66,8 +64,8 @@ public class FBExBlocks {
     }
 
     public static final class Properties {
-        public static final BlockBehaviour.Properties BOREALENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(1.5f, 6.0f).requiresCorrectToolForDrops();
-        public static final BlockBehaviour.Properties BOREALENE_LAMP = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(1.5f, 6.0f).requiresCorrectToolForDrops().lightLevel(s -> 14);
+        public static final BlockBehaviour.Properties BOREALENE = BlockBehaviour.Properties.copy(Blocks.STONE).sound(FBExSoundTypes.BOREALENE);
+        public static final BlockBehaviour.Properties BOREALENE_LAMP = BlockBehaviour.Properties.copy(Blocks.STONE).sound(FBExSoundTypes.BOREALENE).lightLevel(s -> 14);
         public static final BlockBehaviour.Properties SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops();
         public static final BlockBehaviour.Properties IGNEOUS_SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops().lightLevel(s -> 3).emissiveRendering((bs, br, bp) -> true);
     }
