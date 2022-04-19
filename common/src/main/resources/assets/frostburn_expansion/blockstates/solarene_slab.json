@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "frostburn_expansion:block/solarene_slab" },
+    "type=top": { "model": "frostburn_expansion:block/solarene_slab_top" },
+    "type=double": { "model": "frostburn_expansion:block/solarene" }
+  }
+}

@@ -32,6 +32,10 @@
         "frostburn_expansion:scoria_tile_slab",
    		"frostburn_expansion:scoria_tile_stairs",
         "frostburn_expansion:scoria_tile_wall",
-        "frostburn_expansion:igneous_scoria"
+        "frostburn_expansion:igneous_scoria",
+        "frostburn_expansion:solarene",
+        "frostburn_expansion:solarene_slab",
+        "frostburn_expansion:solarene_stairs",
+        "frostburn_expansion:solarene_wall",
 	]
 }

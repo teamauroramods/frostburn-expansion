@@ -4,5 +4,5 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.SoundType;
 
 public class FBExSoundTypes {
-    public static final SoundType BOREALENE = new SoundType(1.0F, 1.0F,SoundEvents.DEEPSLATE_PLACE, SoundEvents.DEEPSLATE_STEP, SoundEvents.DEEPSLATE_PLACE, SoundEvents.DEEPSLATE_HIT, SoundEvents.DEEPSLATE_FALL);
+    public static final SoundType FBEX_STONE = new SoundType(1.0F, 1.0F, SoundEvents.DEEPSLATE_PLACE, SoundEvents.DEEPSLATE_STEP, SoundEvents.DEEPSLATE_PLACE, SoundEvents.DEEPSLATE_HIT, SoundEvents.DEEPSLATE_FALL);
 }

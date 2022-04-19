@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "frostburn_expansion:solarene"
+    }
+  },
+  "result": {
+    "item": "frostburn_expansion:solarene_stairs",
+    "count": 6
+  }
+}

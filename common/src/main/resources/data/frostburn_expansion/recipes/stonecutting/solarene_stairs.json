@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frostburn_expansion:solarene"
+  },
+  "result": "frostburn_expansion:solarene_stairs",
+  "count": 1
+}
