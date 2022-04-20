@@ -22,12 +22,11 @@ import java.util.function.Function;
  */
 
 @SuppressWarnings("deprecation")
-public class TimeDependentLightBlock extends Block {
+public class TimedLightBlock extends Block implements ITimedLightBlockBase {
 
-    public static final BooleanProperty LIGHT = BooleanProperty.create("lit");
     public Function<Level, Boolean> lightSupplier;
 
-    public TimeDependentLightBlock(Properties properties, Function<Level, Boolean> getLightState) {
+    public TimedLightBlock(Properties properties, Function<Level, Boolean> getLightState) {
         super(properties);
         this.lightSupplier = getLightState;
         this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT, false));
@@ -58,36 +57,5 @@ public class TimeDependentLightBlock extends Block {
         }
     }
 
-    public static boolean solareneLightProperties(Level world) {
-        return getLightFromTime(world, 0);
-    }
 
-    public static boolean lunareneLightProperties(Level world) {
-        return getLightFromTime(world, 12000L);
-    }
-
-    private static boolean getLightFromTime(Level world, long offset) {
-        MinecraftServer s = world.getServer();
-        if (s == null) { return false; }
-        ServerLevel overworld = s.getLevel(Level.OVERWORLD);
-        if (overworld != null) {
-            long time = (overworld.getDayTime() + offset) % 24000;
-            if (time >= 12500 && time <= 23500) return false;
-            if (time >= 3500 && time <= 8500) return true;
-            return false;
-        }
-        return false;
-    }
-
-    public static boolean isOpaque(BlockState state, BlockGetter reader, BlockPos pos) {
-        return !state.getValue(LIGHT);
-    }
-
-    public static boolean isLit(BlockState state, BlockGetter reader, BlockPos pos) {
-        return state.getValue(LIGHT);
-    }
-
-    public static int lightValue(BlockState state) {
-        return state.getValue(LIGHT) ? 14 : 0;
-    }
 }

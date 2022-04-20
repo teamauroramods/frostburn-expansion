@@ -1,0 +1,46 @@
+package com.teamaurora.frostburn_expansion.common.block;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+
+public interface ITimedLightBlockBase {
+    BooleanProperty LIGHT = BooleanProperty.create("lit");
+
+
+    static boolean solareneLightProperties(Level world) {
+        return getLightFromTime(world, 0);
+    }
+
+    static boolean lunareneLightProperties(Level world) {
+        return getLightFromTime(world, 12000L);
+    }
+
+    static boolean getLightFromTime(Level world, long offset) {
+        MinecraftServer s = world.getServer();
+        if (s == null) { return false; }
+        ServerLevel overworld = s.getLevel(Level.OVERWORLD);
+        if (overworld != null) {
+            long time = (overworld.getDayTime() + offset) % 24000;
+            if (time >= 12500 && time <= 23500) return false;
+            if (time >= 3500 && time <= 8500) return true;
+        }
+        return true;
+    }
+
+    static boolean isOpaque(BlockState state, BlockGetter reader, BlockPos pos) {
+        return !state.getValue(LIGHT);
+    }
+
+    static boolean isLit(BlockState state, BlockGetter reader, BlockPos pos) {
+        return state.getValue(LIGHT);
+    }
+
+    static int lightValue(BlockState state) {
+        return state.getValue(LIGHT) ? 14 : 0;
+    }
+}
