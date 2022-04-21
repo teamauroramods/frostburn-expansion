@@ -4,6 +4,7 @@ import com.teamaurora.frostburn_expansion.client.render.entity.living.BriskRende
 import com.teamaurora.frostburn_expansion.core.registry.FBExBlocks;
 import com.teamaurora.frostburn_expansion.core.registry.FBExEntities;
 import com.teamaurora.frostburn_expansion.core.registry.FBExItems;
+import com.teamaurora.frostburn_expansion.core.registry.FBExSounds;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
@@ -29,6 +30,7 @@ public class  FrostburnExpansion {
     public static void onCommonInit() {
         FBExBlocks.BLOCKS.register(FrostburnExpansion.PLATFORM);
         FBExItems.ITEMS.register(FrostburnExpansion.PLATFORM);
+        FBExSounds.SOUNDS.register(FrostburnExpansion.PLATFORM);
         FBExEntities.ENTITY_TYPES.register(FrostburnExpansion.PLATFORM);
         FBExEntities.registerEntityAttributes();
     }

@@ -1,9 +1,6 @@
 package com.teamaurora.frostburn_expansion.core.registry;
 
-import com.teamaurora.frostburn_expansion.common.block.ITimedLightBlockBase;
-import com.teamaurora.frostburn_expansion.common.block.TimedLightBlock;
-import com.teamaurora.frostburn_expansion.common.block.TimedLightSlabBlock;
-import com.teamaurora.frostburn_expansion.common.block.TimedLightStairBlock;
+import com.teamaurora.frostburn_expansion.common.block.*;
 import com.teamaurora.frostburn_expansion.core.other.FBExSoundTypes;
 import gg.moonflower.pollen.api.datagen.provider.model.PollinatedBlockModelGenerator;
 import gg.moonflower.pollen.api.registry.PollinatedBlockRegistry;
