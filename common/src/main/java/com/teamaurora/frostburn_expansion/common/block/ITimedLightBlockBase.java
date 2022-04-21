@@ -8,8 +8,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
+import java.util.Random;
+import java.util.function.Function;
+
 public interface ITimedLightBlockBase {
-    BooleanProperty LIGHT = BooleanProperty.create("lit");
+    BooleanProperty LIT = BooleanProperty.create("lit");
 
 
     static boolean solareneLightProperties(Level world) {
@@ -33,14 +36,23 @@ public interface ITimedLightBlockBase {
     }
 
     static boolean isOpaque(BlockState state, BlockGetter reader, BlockPos pos) {
-        return !state.getValue(LIGHT);
+        return !state.getValue(LIT);
     }
 
     static boolean isLit(BlockState state, BlockGetter reader, BlockPos pos) {
-        return state.getValue(LIGHT);
+        return state.getValue(LIT);
     }
 
     static int lightValue(BlockState state) {
-        return state.getValue(LIGHT) ? 14 : 0;
+        return state.getValue(LIT) ? 14 : 0;
+    }
+
+    default void Itick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand, Function<Level, Boolean> lightSupplier) {
+        if (!worldIn.isClientSide) {
+            boolean lightstate = lightSupplier.apply(worldIn);
+            if (!lightstate == (state.getValue(LIT))) {
+                worldIn.setBlock(pos, state.setValue(LIT, lightstate), 2 | 4);
+            }
+        }
     }
 }

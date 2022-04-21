@@ -2,6 +2,8 @@ package com.teamaurora.frostburn_expansion.core.registry;
 
 import com.teamaurora.frostburn_expansion.common.block.ITimedLightBlockBase;
 import com.teamaurora.frostburn_expansion.common.block.TimedLightBlock;
+import com.teamaurora.frostburn_expansion.common.block.TimedLightSlabBlock;
+import com.teamaurora.frostburn_expansion.common.block.TimedLightStairBlock;
 import com.teamaurora.frostburn_expansion.core.other.FBExSoundTypes;
 import gg.moonflower.pollen.api.datagen.provider.model.PollinatedBlockModelGenerator;
 import gg.moonflower.pollen.api.registry.PollinatedBlockRegistry;
@@ -50,9 +52,9 @@ public class FBExBlocks {
 
     /* Solarene & Lunarene */
 
-    public static final Supplier<Block> SOLARENE = BLOCKS.registerWithItem("solarene", () -> new TimedLightBlock(Properties.TIME_DEPENDENT_LIGHT_PROPERTIES, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
-    public static final Supplier<Block> SOLARENE_SLAB = BLOCKS.registerWithItem("solarene_slab", () -> new SlabBlock(Properties.FBEX_STONE), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
-    public static final Supplier<Block> SOLARENE_STAIRS = BLOCKS.registerWithItem("solarene_stairs", () -> new StairBlock(FBExBlocks.BOREALENE.get().defaultBlockState(), Properties.FBEX_STONE), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SOLARENE = BLOCKS.registerWithItem("solarene", () -> new TimedLightBlock(Properties.SOLARENE, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SOLARENE_SLAB = BLOCKS.registerWithItem("solarene_slab", () -> new TimedLightSlabBlock(Properties.SOLARENE, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SOLARENE_STAIRS = BLOCKS.registerWithItem("solarene_stairs", () -> new TimedLightStairBlock(FBExBlocks.SOLARENE.get().defaultBlockState(), Properties.SOLARENE, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> SOLARENE_WALL = BLOCKS.registerWithItem("solarene_wall", () -> new WallBlock(Properties.FBEX_STONE), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
 
     /* Scoria */
@@ -85,6 +87,8 @@ public class FBExBlocks {
         public static final BlockBehaviour.Properties BOREALENE_LAMP = BlockBehaviour.Properties.copy(Blocks.STONE).sound(FBExSoundTypes.FBEX_STONE).lightLevel(s -> 14);
         public static final BlockBehaviour.Properties SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops();
         public static final BlockBehaviour.Properties IGNEOUS_SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops().lightLevel(s -> 3).emissiveRendering((bs, br, bp) -> true);
-        public static final BlockBehaviour.Properties TIME_DEPENDENT_LIGHT_PROPERTIES = BlockBehaviour.Properties.copy(Blocks.STONE).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
+        public static final BlockBehaviour.Properties SOLARENE = BlockBehaviour.Properties.copy(Blocks.STONE).color(MaterialColor.COLOR_YELLOW).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
+        public static final BlockBehaviour.Properties LUNARENE = BlockBehaviour.Properties.copy(Blocks.STONE).color(MaterialColor.COLOR_LIGHT_BLUE).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
+
     }
 }

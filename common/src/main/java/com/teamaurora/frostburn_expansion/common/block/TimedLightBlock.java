@@ -26,20 +26,20 @@ public class TimedLightBlock extends Block implements ITimedLightBlockBase {
 
     public Function<Level, Boolean> lightSupplier;
 
-    public TimedLightBlock(Properties properties, Function<Level, Boolean> getLightState) {
+    public TimedLightBlock(Properties properties, Function<Level, Boolean> lightSupplier) {
         super(properties);
-        this.lightSupplier = getLightState;
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT, false));
+        this.lightSupplier = lightSupplier;
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIGHT);
+        builder.add(LIT);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(LIGHT, this.lightSupplier.apply(context.getLevel()));
+        return this.defaultBlockState().setValue(LIT, this.lightSupplier.apply(context.getLevel()));
     }
 
     @Override
@@ -49,13 +49,7 @@ public class TimedLightBlock extends Block implements ITimedLightBlockBase {
 
     @Override
     public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
-        if (!worldIn.isClientSide) {
-            boolean lightstate = this.lightSupplier.apply(worldIn);
-            if (!lightstate == (state.getValue(LIGHT))) {
-                worldIn.setBlock(pos, state.setValue(LIGHT, lightstate), 2 | 4);
-            }
-        }
+       this.Itick(state, worldIn, pos, rand, this.lightSupplier);
+       super.tick(state, worldIn, pos, rand);
     }
-
-
 }
