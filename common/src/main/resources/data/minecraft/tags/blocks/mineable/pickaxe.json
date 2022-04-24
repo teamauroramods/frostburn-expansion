@@ -36,6 +36,10 @@
     "frostburn_expansion:stellarene",
     "frostburn_expansion:stellarene_slab",
     "frostburn_expansion:stellarene_stairs",
-    "frostburn_expansion:stellarene_wall"
+    "frostburn_expansion:stellarene_wall",
+    "frostburn_expansion:lunarene",
+    "frostburn_expansion:lunarene_slab",
+    "frostburn_expansion:lunarene_stairs",
+    "frostburn_expansion:lunarene_wall"
   ]
 }

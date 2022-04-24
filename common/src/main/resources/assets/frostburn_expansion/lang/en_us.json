@@ -68,6 +68,11 @@
   "block.frostburn_expansion.stellarene_stairs": "Stellarene Stairs",
   "block.frostburn_expansion.stellarene_wall": "Stellarene Wall",
 
+  "block.frostburn_expansion.lunarene": "Lunarene",
+  "block.frostburn_expansion.lunarene_slab": "Lunarene Slab",
+  "block.frostburn_expansion.lunarene_stairs": "Lunarene Stairs",
+  "block.frostburn_expansion.lunarene_wall": "Lunarene Wall",
+
   "block.frostburn_expansion.mossy_basalt" : "Mossy Basalt",
   "block.frostburn_expansion.overgrown_basalt" : "Overgrown Basalt",
   "block.frostburn_expansion.dirty_basalt" : "Dirty Basalt"

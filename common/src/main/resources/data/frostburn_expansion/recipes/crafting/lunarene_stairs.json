@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "frostburn_expansion:lunarene"
+    }
+  },
+  "result": {
+    "item": "frostburn_expansion:lunarene_stairs",
+    "count": 6
+  }
+}

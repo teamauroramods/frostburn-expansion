@@ -54,6 +54,10 @@ public class FBExBlocks {
     public static final Supplier<Block> STELLARENE_STAIRS = BLOCKS.registerWithItem("stellarene_stairs", () -> new TimedLightStairBlock(FBExBlocks.STELLARENE.get().defaultBlockState(), Properties.STELLARENE, ITimedLightBlockBase::stellareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> STELLARENE_WALL = BLOCKS.registerWithItem("stellarene_wall", () -> new TimedLightWallBlock(Properties.STELLARENE, ITimedLightBlockBase::stellareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
 
+    public static final Supplier<Block> LUNARENE = BLOCKS.registerWithItem("lunarene", () -> new TimedLightBlock(Properties.LUNARENE, ITimedLightBlockBase::lunareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> LUNARENE_SLAB = BLOCKS.registerWithItem("lunarene_slab", () -> new TimedLightSlabBlock(Properties.LUNARENE, ITimedLightBlockBase::lunareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> LUNARENE_STAIRS = BLOCKS.registerWithItem("lunarene_stairs", () -> new TimedLightStairBlock(FBExBlocks.LUNARENE.get().defaultBlockState(), Properties.LUNARENE, ITimedLightBlockBase::lunareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> LUNARENE_WALL = BLOCKS.registerWithItem("lunarene_wall", () -> new TimedLightWallBlock(Properties.LUNARENE, ITimedLightBlockBase::lunareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     /* Scoria */
 
     public static final Supplier<Block> SCORIA = BLOCKS.registerWithItem("scoria", () -> new Block(Properties.SCORIA), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
