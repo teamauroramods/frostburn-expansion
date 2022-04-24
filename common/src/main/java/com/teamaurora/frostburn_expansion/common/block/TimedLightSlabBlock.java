@@ -18,6 +18,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 import java.util.function.Function;
 
+@SuppressWarnings("deprecation")
+
 public class TimedLightSlabBlock extends SlabBlock implements ITimedLightBlockBase {
 
     public Function<Level, Boolean> lightSupplier;

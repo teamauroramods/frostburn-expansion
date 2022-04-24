@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
 
+@SuppressWarnings("deprecation")
+
 public class TimedLightWallBlock extends WallBlock implements ITimedLightBlockBase {
     public Function<Level, Boolean> lightSupplier;
 

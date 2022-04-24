@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#  ",
-    "## ",
+    "###",
     "###"
   ],
   "key": {
     "#": {
-      "item": "frostburn_expansion:solarene"
+      "item": "frostburn_expansion:stellarene"
     }
   },
   "result": {
-    "item": "frostburn_expansion:solarene_stairs",
+    "item": "frostburn_expansion:stellarene_wall",
     "count": 6
   }
 }

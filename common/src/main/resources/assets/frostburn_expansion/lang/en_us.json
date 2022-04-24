@@ -63,10 +63,10 @@
   "block.frostburn_expansion.scoria_tile_wall" : "Scoria Tile Wall",
   "block.frostburn_expansion.igneous_scoria" : "Igneous Scoria",
 
-  "block.frostburn_expansion.solarene": "Solarene",
-  "block.frostburn_expansion.solarene_slab": "Solarene Slab",
-  "block.frostburn_expansion.solarene_stairs": "Solarene Stairs",
-  "block.frostburn_expansion.solarene_wall": "Solarene Wall",
+  "block.frostburn_expansion.stellarene": "Stellarene",
+  "block.frostburn_expansion.stellarene_slab": "Stellarene Slab",
+  "block.frostburn_expansion.stellarene_stairs": "Stellarene Stairs",
+  "block.frostburn_expansion.stellarene_wall": "Stellarene Wall",
 
   "block.frostburn_expansion.mossy_basalt" : "Mossy Basalt",
   "block.frostburn_expansion.overgrown_basalt" : "Overgrown Basalt",

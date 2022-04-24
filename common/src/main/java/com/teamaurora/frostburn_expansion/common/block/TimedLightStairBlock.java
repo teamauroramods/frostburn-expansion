@@ -17,6 +17,8 @@ import net.minecraft.world.level.material.Fluids;
 import java.util.Random;
 import java.util.function.Function;
 
+@SuppressWarnings("deprecation")
+
 public class TimedLightStairBlock extends StairBlock implements ITimedLightBlockBase {
 
     public Function<Level, Boolean> lightSupplier;

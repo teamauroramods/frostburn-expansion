@@ -14,13 +14,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import java.util.Random;
 import java.util.function.Function;
 
-/**
- * A block that only emits light during a specified period of time.
- * Totally not stolen from Architects Palette :]
- * @author Jsburger
- * @author ebo2022 (slight modifications)
- */
-
 @SuppressWarnings("deprecation")
 public class TimedLightBlock extends Block implements ITimedLightBlockBase {
 

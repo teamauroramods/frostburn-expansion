@@ -15,7 +15,7 @@ public interface ITimedLightBlockBase {
     BooleanProperty LIT = BooleanProperty.create("lit");
 
 
-    static boolean solareneLightProperties(Level world) {
+    static boolean stellareneLightProperties(Level world) {
         return getLightFromTime(world, 0);
     }
 
