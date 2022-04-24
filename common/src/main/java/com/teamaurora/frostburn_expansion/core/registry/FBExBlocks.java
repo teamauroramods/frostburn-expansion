@@ -47,12 +47,12 @@ public class FBExBlocks {
     public static final Supplier<Block> BOREALENE_PILLAR = BLOCKS.registerWithItem("borealene_pillar", () -> new RotatedPillarBlock(Properties.FBEX_STONE), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> BOREALENE_LAMP = BLOCKS.registerWithItem("borealene_lamp", () -> new Block(Properties.BOREALENE_LAMP), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
 
-    /* Solarene & Lunarene */
+    /* Stellarene & Lunarene */
 
     public static final Supplier<Block> SOLARENE = BLOCKS.registerWithItem("solarene", () -> new TimedLightBlock(Properties.SOLARENE, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> SOLARENE_SLAB = BLOCKS.registerWithItem("solarene_slab", () -> new TimedLightSlabBlock(Properties.SOLARENE, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> SOLARENE_STAIRS = BLOCKS.registerWithItem("solarene_stairs", () -> new TimedLightStairBlock(FBExBlocks.SOLARENE.get().defaultBlockState(), Properties.SOLARENE, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
-    public static final Supplier<Block> SOLARENE_WALL = BLOCKS.registerWithItem("solarene_wall", () -> new WallBlock(Properties.FBEX_STONE), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> SOLARENE_WALL = BLOCKS.registerWithItem("solarene_wall", () -> new TimedLightWallBlock(Properties.SOLARENE, ITimedLightBlockBase::solareneLightProperties), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
 
     /* Scoria */
 
@@ -80,12 +80,12 @@ public class FBExBlocks {
 
 
     public static final class Properties {
-        public static final BlockBehaviour.Properties FBEX_STONE = BlockBehaviour.Properties.copy(Blocks.STONE).sound(FBExSoundTypes.FBEX_STONE);
-        public static final BlockBehaviour.Properties BOREALENE_LAMP = BlockBehaviour.Properties.copy(Blocks.STONE).sound(FBExSoundTypes.FBEX_STONE).lightLevel(s -> 14);
+        public static final BlockBehaviour.Properties FBEX_STONE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).sound(FBExSoundTypes.FBEX_STONE);
+        public static final BlockBehaviour.Properties BOREALENE_LAMP = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).sound(FBExSoundTypes.FBEX_STONE).lightLevel(s -> 14);
         public static final BlockBehaviour.Properties SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops();
         public static final BlockBehaviour.Properties IGNEOUS_SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops().lightLevel(s -> 3).emissiveRendering((bs, br, bp) -> true);
-        public static final BlockBehaviour.Properties SOLARENE = BlockBehaviour.Properties.copy(Blocks.STONE).color(MaterialColor.COLOR_YELLOW).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
-        public static final BlockBehaviour.Properties LUNARENE = BlockBehaviour.Properties.copy(Blocks.STONE).color(MaterialColor.COLOR_LIGHT_BLUE).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
+        public static final BlockBehaviour.Properties SOLARENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).color(MaterialColor.COLOR_YELLOW).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
+        public static final BlockBehaviour.Properties LUNARENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).color(MaterialColor.COLOR_LIGHT_BLUE).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
 
     }
 }
