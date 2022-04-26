@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "frostburn_expansion:stellarene"
+    }
+  },
+  "result": {
+    "item": "frostburn_expansion:polished_stellarene",
+    "count": 4
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "frostburn_expansion:block/polished_stellarene_slab" },
+    "type=top": { "model": "frostburn_expansion:block/polished_stellarene_slab_top" },
+    "type=double": { "model": "frostburn_expansion:block/polished_stellarene" }
+  }
+}
