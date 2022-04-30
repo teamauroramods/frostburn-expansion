@@ -44,6 +44,10 @@
     "frostburn_expansion:lunarene",
     "frostburn_expansion:lunarene_slab",
     "frostburn_expansion:lunarene_stairs",
-    "frostburn_expansion:lunarene_wall"
+    "frostburn_expansion:lunarene_wall",
+    "frostburn_expansion:polished_lunarene",
+    "frostburn_expansion:polished_lunarene_slab",
+    "frostburn_expansion:polished_lunarene_stairs",
+    "frostburn_expansion:polished_lunarene_wall"
   ]
 }

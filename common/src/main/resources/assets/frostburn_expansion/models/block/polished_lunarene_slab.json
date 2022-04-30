@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "frostburn_expansion:block/polished_lunarene",
+    "top": "frostburn_expansion:block/polished_lunarene",
+    "side": "frostburn_expansion:block/polished_lunarene"
+  }
+}

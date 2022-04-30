@@ -35,6 +35,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.JukeboxBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -44,6 +50,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * Brisk
@@ -64,7 +71,6 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	private int animationTick;
 	public boolean isDancing = false;
 	private final AnimationEffectHandler effectHandler;
-	BlockPos jukeBoxPosition;
 
 	public Brisk(EntityType<? extends Monster> type, Level worldIn) {
 		super(type, worldIn);
@@ -307,13 +313,15 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	}
 
 	private static class BriskDanceGoal extends Goal {
-
 		private final Brisk brisk;
+		private static final int maxScreechTime = 40;
 		private int screechTime;
 
 		protected BriskDanceGoal(Brisk brisk) {
 			this.brisk = brisk;
 		}
+
+
 
 		@Override
 		public boolean canUse() {

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frostburn_expansion:lunarene"
+  },
+  "result": "frostburn_expansion:polished_lunarene_slab",
+  "count": 2
+}
