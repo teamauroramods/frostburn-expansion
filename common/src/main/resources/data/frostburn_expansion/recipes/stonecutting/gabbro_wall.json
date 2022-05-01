@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frostburn_expansion:gabbro"
+  },
+  "result": "frostburn_expansion:gabbro_wall",
+  "count": 1
+}

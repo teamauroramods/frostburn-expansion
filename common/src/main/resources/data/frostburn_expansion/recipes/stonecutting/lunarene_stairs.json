@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "frostburn_expansion:stellarene"
+    "item": "frostburn_expansion:lunarene"
   },
-  "result": "frostburn_expansion:stellarene_stairs",
+  "result": "frostburn_expansion:lunarene_stairs",
   "count": 1
 }
