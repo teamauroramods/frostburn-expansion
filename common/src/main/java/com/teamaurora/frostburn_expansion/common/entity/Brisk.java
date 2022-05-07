@@ -65,12 +65,14 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	private int swell;
 	private int maxSwell = 30;
 	private int explosionRadius = 3;
-	private AnimationState animation = AnimationState.EMPTY;
-	public static final AnimationState DANCE = new AnimationState(2000);
-	private AnimationState animationState;
-	private int animationTick;
-	public boolean isDancing = false;
 	private final AnimationEffectHandler effectHandler;
+	private AnimationState animationState;
+	private AnimationState transitionAnimationState;
+	private int animationTick;
+	private int animationTransitionTick;
+	private int animationTransitionLength;
+	public static final AnimationState DANCE = new AnimationState(2000);
+	public boolean isDancing = false;
 
 	public Brisk(EntityType<? extends Monster> type, Level worldIn) {
 		super(type, worldIn);
@@ -289,8 +291,33 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	}
 
 	@Override
+	public int getAnimationTransitionTick() {
+		return animationTransitionTick;
+	}
+
+	@Override
+	public void setAnimationTransitionTick(int animationTransitionTick) {
+		this.animationTransitionTick = animationTransitionTick;
+	}
+
+	@Override
+	public int getAnimationTransitionLength() {
+		return animationTransitionLength;
+	}
+
+	@Override
+	public void setAnimationTransitionLength(int animationTransitionLength) {
+		this.animationTransitionLength = animationTransitionLength;
+	}
+
+	@Override
 	public AnimationState getAnimationState() {
 		return animationState;
+	}
+
+	@Override
+	public AnimationState getTransitionAnimationState() {
+		return transitionAnimationState;
 	}
 
 	@Override
@@ -298,13 +325,12 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 		this.onAnimationStop(this.animationState);
 		this.animationState = state;
 		this.setAnimationTick(0);
+		this.setAnimationTransitionLength(0);
 	}
 
-	public void setDancing(boolean dancing) {
-		this.isDancing = dancing;
-	}
-	public boolean getDancing() {
-		return this.isDancing;
+	@Override
+	public void setTransitionAnimationState(AnimationState state) {
+		this.transitionAnimationState = state;
 	}
 
 	@Override
@@ -312,15 +338,16 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 		return effectHandler;
 	}
 
+	public void setDancing(boolean value) {
+		this.isDancing = value;
+	}
+
 	private static class BriskDanceGoal extends Goal {
 		private final Brisk brisk;
-		private static final int maxScreechTime = 40;
-		private int screechTime;
 
 		protected BriskDanceGoal(Brisk brisk) {
 			this.brisk = brisk;
 		}
-
 
 
 		@Override
@@ -342,7 +369,6 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 		@Override
 		public void stop() {
 			this.brisk.setDancing(false);
-			this.screechTime = 0;
 		}
 	}
 

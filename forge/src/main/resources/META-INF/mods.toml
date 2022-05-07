@@ -12,7 +12,7 @@ credits = "ebo2022"
 description = "An expansion for Minecraft's hot and cold areas."
 displayURL = "https://discord.gg/BgE4EpP"
 #updateJSONURL = ""
-#logoFile = ""
+logoFile = "logo.png"
 
 [[dependencies.${id}]]
 modId = "forge"
@@ -24,13 +24,13 @@ side = "BOTH"
 [[dependencies.${id}]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18,)"
+versionRange = "[1.18.2,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${id}]]
 modId = "pollen"
 mandatory = true
-versionRange = "[1.2.0,)"
+versionRange = "[1.4.1,)"
 ordering = "BEFORE"
 side = "BOTH"
