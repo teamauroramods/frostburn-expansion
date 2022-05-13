@@ -88,7 +88,10 @@
   "block.frostburn_expansion.gabbro_stairs": "Gabbro Stairs",
   "block.frostburn_expansion.gabbro_wall": "Gabbro Wall",
 
-
+  "block.frostburn_expansion.gabbro_bricks": "Gabbro Bricks",
+  "block.frostburn_expansion.gabbro_brick_slab": "Gabbro Brick Slab",
+  "block.frostburn_expansion.gabbro_brick_stairs": "Gabbro Brick Stairs",
+  "block.frostburn_expansion.gabbro_brick_wall": "Gabbro Brick Wall",
 
   "block.frostburn_expansion.mossy_basalt" : "Mossy Basalt",
   "block.frostburn_expansion.overgrown_basalt" : "Overgrown Basalt",

@@ -102,14 +102,18 @@ public class FBExBlocks {
     public static final Supplier<Block> GABBRO_STAIRS = BLOCKS.registerWithItem("gabbro_stairs", () -> new StairBlock(GABBRO.get().defaultBlockState(), Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> GABBRO_WALL = BLOCKS.registerWithItem("gabbro_wall", () -> new WallBlock(Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
 
+    public static final Supplier<Block> GABBRO_BRICKS = BLOCKS.registerWithItem("gabbro_bricks", () -> new Block(Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> GABBRO_BRICK_SLAB = BLOCKS.registerWithItem("gabbro_brick_slab", () -> new SlabBlock(Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> GABBRO_BRICK_STAIRS = BLOCKS.registerWithItem("gabbro_brick_stairs", () -> new StairBlock(GABBRO_BRICKS.get().defaultBlockState(), Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+    public static final Supplier<Block> GABBRO_BRICK_WALL = BLOCKS.registerWithItem("gabbro_brick_wall", () -> new WallBlock(Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
 
     public static final class Properties {
         public static final BlockBehaviour.Properties FBEX_STONE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).sound(FBExSoundTypes.FBEX_STONE);
         public static final BlockBehaviour.Properties BOREALENE_LAMP = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).sound(FBExSoundTypes.FBEX_STONE).lightLevel(s -> 14);
         public static final BlockBehaviour.Properties SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).sound(SoundType.BASALT).strength(1.75f, 5.0f).requiresCorrectToolForDrops();
         public static final BlockBehaviour.Properties IGNEOUS_SCORIA = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).sound(SoundType.BASALT).strength(1.25f, 5.0f).requiresCorrectToolForDrops().lightLevel(s -> 3).emissiveRendering((bs, br, bp) -> true);
-        public static final BlockBehaviour.Properties STELLARENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).color(MaterialColor.COLOR_YELLOW).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
-        public static final BlockBehaviour.Properties LUNARENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).color(MaterialColor.COLOR_LIGHT_BLUE).sound(FBExSoundTypes.FBEX_STONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
+        public static final BlockBehaviour.Properties STELLARENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).color(MaterialColor.COLOR_YELLOW).sound(SoundType.GILDED_BLACKSTONE).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
+        public static final BlockBehaviour.Properties LUNARENE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).color(MaterialColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST_CLUSTER).lightLevel(ITimedLightBlockBase::lightValue).randomTicks();
         public static final BlockBehaviour.Properties GABBRO = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_BLACK).sound(SoundType.CALCITE).requiresCorrectToolForDrops().strength(1.25f);
 
     }
