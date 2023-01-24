@@ -2,17 +2,14 @@ package com.teamaurora.frostburn_expansion.core.registry;
 
 import com.teamaurora.frostburn_expansion.common.block.*;
 import com.teamaurora.frostburn_expansion.core.other.FBExSoundTypes;
-import gg.moonflower.pollen.api.datagen.provider.model.PollinatedBlockModelGenerator;
 import gg.moonflower.pollen.api.registry.PollinatedBlockRegistry;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
-import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraft.world.level.storage.loot.LootTables;
 
 import java.util.function.Supplier;
 

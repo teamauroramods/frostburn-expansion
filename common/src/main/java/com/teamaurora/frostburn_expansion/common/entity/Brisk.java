@@ -3,9 +3,7 @@ package com.teamaurora.frostburn_expansion.common.entity;
 import com.teamaurora.frostburn_expansion.common.entity.ai.goal.BriskSwellGoal;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimatedEntity;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationEffectHandler;
-import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationEffectSource;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationState;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -13,7 +11,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -35,28 +32,21 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.JukeboxBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 /**
  * Brisk
  * @author mostly mojang lol
  *
  */
+
+@ParametersAreNonnullByDefault
 public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	private static final EntityDataAccessor<Integer> DATA_SWELL_DIR;
 	private static final EntityDataAccessor<Boolean> DATA_IS_POWERED;
@@ -84,15 +74,15 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(2, new BriskSwellGoal(this));
-		this.goalSelector.addGoal(3, new AvoidEntityGoal(this, Ocelot.class, 6.0F, 1.0D, 1.2D));
-		this.goalSelector.addGoal(3, new AvoidEntityGoal(this, Cat.class, 6.0F, 1.0D, 1.2D));
+		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Ocelot.class, 6.0F, 1.0D, 1.2D));
+		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Cat.class, 6.0F, 1.0D, 1.2D));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.8D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.goalSelector.addGoal(7, new BriskDanceGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true));
-		this.targetSelector.addGoal(2, new HurtByTargetGoal(this, new Class[0]));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
 	}
 
 	public static Supplier<AttributeSupplier.Builder> createAttributes() {
@@ -122,7 +112,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
 		super.addAdditionalSaveData(compoundTag);
-		if ((Boolean)this.entityData.get(DATA_IS_POWERED)) {
+		if (this.entityData.get(DATA_IS_POWERED)) {
 			compoundTag.putBoolean("powered", true);
 		}
 
@@ -194,7 +184,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	}
 
 	public boolean isPowered() {
-		return (Boolean)this.entityData.get(DATA_IS_POWERED);
+		return this.entityData.get(DATA_IS_POWERED);
 	}
 
 	public float getSwelling(float f) {
@@ -202,7 +192,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	}
 
 	public int getSwellDir() {
-		return (Integer)this.entityData.get(DATA_SWELL_DIR);
+		return this.entityData.get(DATA_SWELL_DIR);
 	}
 
 	public void setSwellDir(int i) {
@@ -214,6 +204,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 		this.entityData.set(DATA_IS_POWERED, true);
 	}
 
+	@NotNull
 	protected InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		if (itemStack.is(Items.FLINT_AND_STEEL)) {
@@ -221,9 +212,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 			this.level.playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
 			if (!this.level.isClientSide) {
 				this.ignite();
-				itemStack.hurtAndBreak(1, player, (playerx) -> {
-					playerx.broadcastBreakEvent(interactionHand);
-				});
+				itemStack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(interactionHand));
 			}
 
 			return InteractionResult.sidedSuccess(this.level.isClientSide);
@@ -253,10 +242,8 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 			areaEffectCloud.setWaitTime(10);
 			areaEffectCloud.setDuration(areaEffectCloud.getDuration() / 2);
 			areaEffectCloud.setRadiusPerTick(-areaEffectCloud.getRadius() / (float)areaEffectCloud.getDuration());
-			Iterator var3 = collection.iterator();
 
-			while(var3.hasNext()) {
-				MobEffectInstance mobEffectInstance = (MobEffectInstance)var3.next();
+			for (MobEffectInstance mobEffectInstance : collection) {
 				areaEffectCloud.addEffect(new MobEffectInstance(mobEffectInstance));
 			}
 
@@ -266,7 +253,7 @@ public class Brisk extends Monster implements PowerableMob, AnimatedEntity {
 	}
 
 	public boolean isIgnited() {
-		return (Boolean)this.entityData.get(DATA_IS_IGNITED);
+		return this.entityData.get(DATA_IS_IGNITED);
 	}
 
 	public void ignite() {

@@ -9,9 +9,9 @@ import gg.moonflower.pollen.api.config.ConfigManager;
 import gg.moonflower.pollen.api.config.PollinatedConfigType;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
-import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
 import net.minecraft.resources.ResourceLocation;
 
+@SuppressWarnings("unused")
 public class  FrostburnExpansion {
     public static final String MOD_ID = "frostburn_expansion";
     public static final FrostburnExpansionConfig.Client CLIENT_CONFIG = ConfigManager.register(MOD_ID, PollinatedConfigType.CLIENT, FrostburnExpansionConfig.Client::new);

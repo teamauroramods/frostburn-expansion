@@ -14,11 +14,11 @@ import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 import java.util.function.Function;
 
-@SuppressWarnings("deprecation")
-
+@ParametersAreNonnullByDefault
 public class TimedLightStairBlock extends StairBlock implements ITimedLightBlockBase {
 
     public Function<Level, Boolean> lightSupplier;

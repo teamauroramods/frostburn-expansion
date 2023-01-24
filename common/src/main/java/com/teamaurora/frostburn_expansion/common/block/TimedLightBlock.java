@@ -1,20 +1,19 @@
 package com.teamaurora.frostburn_expansion.common.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 import java.util.function.Function;
 
 @SuppressWarnings("deprecation")
+@ParametersAreNonnullByDefault
 public class TimedLightBlock extends Block implements ITimedLightBlockBase {
 
     public Function<Level, Boolean> lightSupplier;

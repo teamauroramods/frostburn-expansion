@@ -13,6 +13,7 @@ import net.minecraft.world.item.Rarity;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings({"unused", "deprecation"})
 public class FBExItems {
     public static final PollinatedRegistry<Item> ITEMS = PollinatedRegistry.create(Registry.ITEM, FrostburnExpansion.MOD_ID);
 

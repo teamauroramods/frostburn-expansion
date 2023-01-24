@@ -9,17 +9,17 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 import java.util.function.Function;
 
 @SuppressWarnings("deprecation")
-
+@ParametersAreNonnullByDefault
 public class TimedLightSlabBlock extends SlabBlock implements ITimedLightBlockBase {
 
     public Function<Level, Boolean> lightSupplier;
@@ -47,7 +47,7 @@ public class TimedLightSlabBlock extends SlabBlock implements ITimedLightBlockBa
             FluidState fluidState = worldIn.getFluidState(blockPos);
             BlockState blockState2 = this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER).setValue(LIT, this.lightSupplier.apply(worldIn));
             Direction direction = context.getClickedFace();
-            return direction != Direction.DOWN && (direction == Direction.UP || !(context.getClickLocation().y - (double)blockPos.getY() > 0.5D)) ? blockState2 : (BlockState)blockState2.setValue(TYPE, SlabType.TOP).setValue(LIT, this.lightSupplier.apply(worldIn));
+            return direction != Direction.DOWN && (direction == Direction.UP || !(context.getClickLocation().y - (double)blockPos.getY() > 0.5D)) ? blockState2 : blockState2.setValue(TYPE, SlabType.TOP).setValue(LIT, this.lightSupplier.apply(worldIn));
         }
     }
 

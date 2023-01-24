@@ -6,24 +6,24 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
 
 @SuppressWarnings("deprecation")
-
+@ParametersAreNonnullByDefault
 public class TimedLightWallBlock extends WallBlock implements ITimedLightBlockBase {
     public Function<Level, Boolean> lightSupplier;
 
@@ -40,6 +40,7 @@ public class TimedLightWallBlock extends WallBlock implements ITimedLightBlockBa
     }
 
     @Override
+    @NotNull
     public Map<BlockState, VoxelShape> makeShapes(float f, float g, float h, float i, float j, float k) {
         float l = 8.0f - f;
         float m = 8.0f + f;
@@ -65,14 +66,14 @@ public class TimedLightWallBlock extends WallBlock implements ITimedLightBlockBa
                             voxelShape10 = WallBlock.applyWallShape(voxelShape10, wallSide3, voxelShape4, voxelShape8);
                             voxelShape10 = WallBlock.applyWallShape(voxelShape10, wallSide2, voxelShape2, voxelShape6);
                             voxelShape10 = WallBlock.applyWallShape(voxelShape10, wallSide4, voxelShape3, voxelShape7);
-                            if (boolean_.booleanValue()) {
+                            if (boolean_) {
                                 voxelShape10 = Shapes.or(voxelShape10, voxelShape);
                             }
-                            BlockState blockState = (BlockState)((BlockState)((BlockState)((BlockState)((BlockState)this.defaultBlockState().setValue(UP, boolean_)).setValue(EAST_WALL, wallSide)).setValue(WEST_WALL, wallSide3)).setValue(NORTH_WALL, wallSide2)).setValue(SOUTH_WALL, wallSide4);
-                            builder.put((BlockState)blockState.setValue(WATERLOGGED, false).setValue(LIT, false), voxelShape10);
-                            builder.put((BlockState)blockState.setValue(WATERLOGGED, true).setValue(LIT, true), voxelShape10);
-                            builder.put((BlockState)blockState.setValue(WATERLOGGED, true).setValue(LIT, false), voxelShape10);
-                            builder.put((BlockState)blockState.setValue(WATERLOGGED, false).setValue(LIT, true), voxelShape10);
+                            BlockState blockState = this.defaultBlockState().setValue(UP, boolean_).setValue(EAST_WALL, wallSide).setValue(WEST_WALL, wallSide3).setValue(NORTH_WALL, wallSide2).setValue(SOUTH_WALL, wallSide4);
+                            builder.put(blockState.setValue(WATERLOGGED, false).setValue(LIT, false), voxelShape10);
+                            builder.put(blockState.setValue(WATERLOGGED, true).setValue(LIT, true), voxelShape10);
+                            builder.put(blockState.setValue(WATERLOGGED, true).setValue(LIT, false), voxelShape10);
+                            builder.put(blockState.setValue(WATERLOGGED, false).setValue(LIT, true), voxelShape10);
                         }
                     }
                 }
@@ -100,7 +101,7 @@ public class TimedLightWallBlock extends WallBlock implements ITimedLightBlockBa
         boolean bl2 = this.connectsTo(blockState2, blockState2.isFaceSturdy(levelReader, blockPos3, Direction.WEST), Direction.WEST);
         boolean bl3 = this.connectsTo(blockState3, blockState3.isFaceSturdy(levelReader, blockPos4, Direction.NORTH), Direction.NORTH);
         boolean bl4 = this.connectsTo(blockState4, blockState4.isFaceSturdy(levelReader, blockPos5, Direction.EAST), Direction.EAST);
-        BlockState blockState6 = (BlockState)this.defaultBlockState().setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+        BlockState blockState6 = this.defaultBlockState().setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
         return this.updateShape(levelReader, blockState6, blockPos6, blockState5, bl, bl2, bl3, bl4).setValue(LIT, lightSupplier.apply(levelReader));
     }
 

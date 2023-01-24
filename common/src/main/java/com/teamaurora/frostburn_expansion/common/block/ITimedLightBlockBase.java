@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import java.util.Random;
 import java.util.function.Function;
 
+@SuppressWarnings("unused")
 public interface ITimedLightBlockBase {
     BooleanProperty LIT = BooleanProperty.create("lit");
 
