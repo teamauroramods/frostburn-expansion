@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvent;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("SameParameterValue")
 public class FBExSounds {
     public static final PollinatedRegistry<SoundEvent> SOUNDS = PollinatedRegistry.create(Registry.SOUND_EVENT, FrostburnExpansion.MOD_ID);
 

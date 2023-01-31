@@ -15,6 +15,7 @@ import java.util.function.Supplier;
 
 /**
  * @author ebo2022
+ * @author JustinPlayzz
  */
 
 @SuppressWarnings("unused")
@@ -103,6 +104,10 @@ public class FBExBlocks {
     public static final Supplier<Block> GABBRO_BRICK_SLAB = BLOCKS.registerWithItem("gabbro_brick_slab", () -> new SlabBlock(Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> GABBRO_BRICK_STAIRS = BLOCKS.registerWithItem("gabbro_brick_stairs", () -> new StairBlock(GABBRO_BRICKS.get().defaultBlockState(), Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
     public static final Supplier<Block> GABBRO_BRICK_WALL = BLOCKS.registerWithItem("gabbro_brick_wall", () -> new WallBlock(Properties.GABBRO), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS));
+
+    /* Concept Blocks */
+
+
 
     public static final class Properties {
         public static final BlockBehaviour.Properties FBEX_STONE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(1.5f, 6.0f).sound(FBExSoundTypes.FBEX_STONE);

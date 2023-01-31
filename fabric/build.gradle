@@ -12,17 +12,9 @@ architectury {
     fabric()
 }
 
-def generatedResources = file("src/generated/resources")
 def accessWidenerFile = project(":common").file("src/main/resources/${rootProject.mod_id}.accesswidener")
 
 sourceSets.main.resources.srcDirs += project(":common").file(project.output_datagen)
-
-sourceSets {
-    datagen {
-        compileClasspath += main.compileClasspath
-        runtimeClasspath += main.runtimeClasspath
-    }
-}
 
 loom {
     mixin {
@@ -33,14 +25,11 @@ loom {
 
     runs {
         datagen {
-            name "Data Generation"
-
             server()
-            source sourceSets.datagen
 
-            name "Minecraft Data"
+            name "Data Generation"
             vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${project(":common").file(project.output_datagen)}"
+            vmArg "-Dfabric-api.datagen.output-dir=${project(":common").file(project.output_datagen).absolutePath}"
 
             runDir "build/datagen"
         }

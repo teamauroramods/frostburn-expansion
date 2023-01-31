@@ -5,7 +5,7 @@
   "name": "${name}",
   "description": "An expansion for Minecraft's hot and cold biomes.",
   "authors": [ "Team Aurora" ],
-  "contributors": [ "ebo2022", "JustoPlayzz" ],
+  "contributors": [ "ebo2022", "JustinPlayzz" ],
   "contact": {
     "homepage": "https://discord.gg/BgE4EpP",
 	"issues": "https://github.com/teamauroramods/${repo}/issues",
@@ -16,8 +16,14 @@
   "entrypoints": {
     "main": [
       "com.teamaurora.frostburn_expansion.core.fabric.FrostburnExpansionFabric"
+    ],
+    "fabric-datagen": [
+      "com.teamaurora.frostburn_expansion.core.fabric.FrostburnExpansionFabricDatagen"
     ]
   },
+  "mixins": [
+    "frostburn_expansion.mixins.json"
+  ],
   "depends": {
     "fabric": "*",
     "minecraft": "1.18.2",

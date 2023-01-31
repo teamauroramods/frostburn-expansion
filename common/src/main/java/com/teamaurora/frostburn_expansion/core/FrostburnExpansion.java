@@ -5,10 +5,14 @@ import com.teamaurora.frostburn_expansion.core.registry.FBExBlocks;
 import com.teamaurora.frostburn_expansion.core.registry.FBExEntities;
 import com.teamaurora.frostburn_expansion.core.registry.FBExItems;
 import com.teamaurora.frostburn_expansion.core.registry.FBExSounds;
+import com.teamaurora.frostburn_expansion.datagen.FBExBlockModelProvider;
 import gg.moonflower.pollen.api.config.ConfigManager;
 import gg.moonflower.pollen.api.config.PollinatedConfigType;
+import gg.moonflower.pollen.api.datagen.provider.model.PollinatedModelProvider;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
+import gg.moonflower.pollen.api.util.PollinatedModContainer;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("unused")
@@ -17,8 +21,8 @@ public class  FrostburnExpansion {
     public static final FrostburnExpansionConfig.Client CLIENT_CONFIG = ConfigManager.register(MOD_ID, PollinatedConfigType.CLIENT, FrostburnExpansionConfig.Client::new);
     public static final FrostburnExpansionConfig.Common COMMON_CONFIG = ConfigManager.register(MOD_ID, PollinatedConfigType.COMMON, FrostburnExpansionConfig.Common::new);
     public static final Platform PLATFORM = Platform.builder(MOD_ID)
-            .clientInit(FrostburnExpansion::onClientInit)
-            .clientPostInit(FrostburnExpansion::onClientPostInit)
+            .clientInit(() -> FrostburnExpansion::onClientInit)
+            .clientPostInit(() -> FrostburnExpansion::onClientPostInit)
             .commonInit(FrostburnExpansion::onCommonInit)
             .commonPostInit(FrostburnExpansion::onCommonPostInit)
             .dataInit(FrostburnExpansion::onDataInit)
@@ -32,17 +36,22 @@ public class  FrostburnExpansion {
     }
 
     public static void onCommonInit() {
-        FBExBlocks.BLOCKS.register(FrostburnExpansion.PLATFORM);
-        FBExItems.ITEMS.register(FrostburnExpansion.PLATFORM);
-        FBExSounds.SOUNDS.register(FrostburnExpansion.PLATFORM);
-        FBExEntities.ENTITY_TYPES.register(FrostburnExpansion.PLATFORM);
+        FBExBlocks.BLOCKS.register(PLATFORM);
+        FBExItems.ITEMS.register(PLATFORM);
+        FBExSounds.SOUNDS.register(PLATFORM);
+        FBExEntities.ENTITY_TYPES.register(PLATFORM);
         FBExEntities.registerEntityAttributes();
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
     }
 
-    public static void onDataInit(Platform.DataSetupContext ctx) {
+    private static void onDataInit(Platform.DataSetupContext ctx) {
+        DataGenerator generator = ctx.getGenerator();
+        PollinatedModContainer container = ctx.getMod();
+        PollinatedModelProvider modelProvider = new PollinatedModelProvider(generator, container);
+        modelProvider.addGenerator(FBExBlockModelProvider::new);
+        generator.addProvider(modelProvider);
     }
 
     public static ResourceLocation generateResourceLocation(String path) {
