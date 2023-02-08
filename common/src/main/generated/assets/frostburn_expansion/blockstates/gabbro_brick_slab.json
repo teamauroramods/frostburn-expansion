@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frostburn_expansion:block/gabbro_brick_slab"
+    },
+    "type=double": {
+      "model": "frostburn_expansion:block/gabbro_bricks"
+    },
+    "type=top": {
+      "model": "frostburn_expansion:block/gabbro_brick_slab_top"
+    }
+  }
+}

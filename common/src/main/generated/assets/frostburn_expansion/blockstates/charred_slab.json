@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frostburn_expansion:block/charred_slab"
+    },
+    "type=double": {
+      "model": "frostburn_expansion:block/charred_planks"
+    },
+    "type=top": {
+      "model": "frostburn_expansion:block/charred_slab_top"
+    }
+  }
+}

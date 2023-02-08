@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "frostburn_expansion:block/mossy_peridotite_top",
+    "bottom": "frostburn_expansion:block/mossy_peridotite_bottom",
+    "side": "frostburn_expansion:block/mossy_peridotite_side"
+  }
+}
