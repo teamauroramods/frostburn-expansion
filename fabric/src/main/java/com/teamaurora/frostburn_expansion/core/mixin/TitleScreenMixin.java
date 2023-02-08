@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class TitleScreenMixin {
     @Inject(method = "render", at = @At("RETURN"))
     private void onRenderTitleScreen (CallbackInfo ci) {
-        FrostburnExpansionFabric.joinLocalWorld("New World");
+            FrostburnExpansionFabric.joinLocalWorld("New World");
     }
 }

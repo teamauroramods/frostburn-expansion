@@ -4,6 +4,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
 
     modApi("gg.moonflower:pollen:${rootProject.pollen_version}") { transitive = false }
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${rootProject.rei_version}"
 }
 
 architectury {

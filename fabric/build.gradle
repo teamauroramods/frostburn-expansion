@@ -53,6 +53,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     modApi("gg.moonflower:pollen-fabric:${rootProject.pollen_version}") { transitive = false }
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
 
     modRuntimeOnly "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
 
@@ -71,12 +72,6 @@ processResources {
                 "name": rootProject.mod_name,
                 "version": rootProject.mod_version,
                 "repo": rootProject.name
-    }
-
-    doLast {
-        fileTree(dir: outputs.files.asPath, include: "**/*.json").each {
-            File file -> file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
-        }
     }
 }
 

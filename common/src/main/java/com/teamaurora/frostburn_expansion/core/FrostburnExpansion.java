@@ -10,8 +10,11 @@ import gg.moonflower.pollen.api.config.ConfigManager;
 import gg.moonflower.pollen.api.config.PollinatedConfigType;
 import gg.moonflower.pollen.api.datagen.provider.model.PollinatedModelProvider;
 import gg.moonflower.pollen.api.platform.Platform;
+import gg.moonflower.pollen.api.registry.StrippingRegistry;
 import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
+import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
 import gg.moonflower.pollen.api.util.PollinatedModContainer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 
@@ -33,6 +36,7 @@ public class  FrostburnExpansion {
     }
 
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
+        RenderTypeRegistry.register(FBExBlocks.FROSTWOOD_DOOR.get(), RenderType.cutoutMipped());
     }
 
     public static void onCommonInit() {
@@ -44,6 +48,10 @@ public class  FrostburnExpansion {
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
+        StrippingRegistry.register(FBExBlocks.CHARRED_LOG.get(), FBExBlocks.STRIPPED_CHARRED_LOG.get());
+        StrippingRegistry.register(FBExBlocks.CHARRED_WOOD.get(), FBExBlocks.STRIPPED_CHARRED_WOOD.get());
+        StrippingRegistry.register(FBExBlocks.FROSTWOOD_LOG.get(), FBExBlocks.STRIPPED_FROSTWOOD_LOG.get());
+        StrippingRegistry.register(FBExBlocks.FROSTWOOD_WOOD.get(), FBExBlocks.STRIPPED_FROSTWOOD_WOOD.get());
     }
 
     private static void onDataInit(Platform.DataSetupContext ctx) {
